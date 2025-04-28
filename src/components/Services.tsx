@@ -9,28 +9,24 @@ const Services = () => {
       title: "Cloud Hosting",
       description: "Secure, scalable cloud infrastructure specifically designed for healthcare applications.",
       industries: ["Healthcare", "Pharma", "Medical Research"],
-      bgColor: "bg-blue-700",
     },
     {
       icon: <Code className="h-8 w-8 text-white" />,
       title: "Software Development",
       description: "Custom healthcare applications built with security and compliance in mind.",
       industries: ["Healthcare", "IT", "Pharma"],
-      bgColor: "bg-blue-700",
     },
     {
       icon: <Bot className="h-8 w-8 text-white" />,
       title: "AI & Automation",
       description: "Intelligent solutions that streamline healthcare workflows and improve outcomes.",
       industries: ["Healthcare", "Research", "Pharma"],
-      bgColor: "bg-blue-700",
     },
     {
       icon: <Network className="h-8 w-8 text-white" />,
       title: "Internet Provider",
       description: "Reliable, high-speed connectivity solutions for healthcare organizations.",
       industries: ["Healthcare", "IT", "Retail"],
-      bgColor: "bg-blue-700",
     },
   ];
 
@@ -38,24 +34,28 @@ const Services = () => {
     {
       icon: <ShieldCheck className="h-6 w-6 text-blue-700" />,
       title: "Security First",
-      description: "End-to-end encryption and security protocols for all services."
+      description: "End-to-end encryption and security protocols for all services.",
     },
     {
       icon: <Lock className="h-6 w-6 text-blue-700" />,
       title: "Compliance Guaranteed",
-      description: "Built-in HIPAA, GDPR, and ISO compliance across our services."
+      description: "Built-in HIPAA, GDPR, and ISO compliance across our services.",
     },
     {
       icon: <CloudCog className="h-6 w-6 text-blue-700" />,
       title: "24/7 Monitoring",
-      description: "Continuous systems monitoring and rapid incident response."
+      description: "Continuous systems monitoring and rapid incident response.",
     },
     {
       icon: <Database className="h-6 w-6 text-blue-700" />,
       title: "Data Protection",
-      description: "Robust data protection with automated backups and recovery."
-    }
+      description: "Robust data protection with automated backups and recovery.",
+    },
   ];
+
+  const gradientStyle = {
+    background: "linear-gradient(100deg, #0059A8 0%, #00427C 100%)",
+  };
 
   return (
     <section id="services" className="py-20 bg-gray-50">
@@ -65,13 +65,13 @@ const Services = () => {
           subtitle="Comprehensive Healthcare IT Solutions"
           description="We offer a full spectrum of technology services tailored specifically for healthcare organizations."
         />
-        
+
         <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {serviceCategories.map((service, index) => (
             <ServiceCard key={index} service={service} />
           ))}
         </div>
-        
+
         <div className="mt-20">
           <h3 className="text-2xl font-bold text-blue-900 text-center mb-10">Core Features Across All Services</h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -91,14 +91,17 @@ interface ServiceProps {
     title: string;
     description: string;
     industries: string[];
-    bgColor: string;
   };
 }
+
+const gradientStyle = {
+  background: "linear-gradient(100deg, #0059A8 0%, #00427C 100%)",
+};
 
 const ServiceCard: React.FC<ServiceProps> = ({ service }) => {
   return (
     <div className="group rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white h-full flex flex-col">
-      <div className={`${service.bgColor} p-6 transition-all group-hover:py-8`}>
+      <div className="p-6 transition-all group-hover:py-8" style={gradientStyle}>
         <div className="flex justify-center">{service.icon}</div>
       </div>
       <div className="p-6 flex-grow">
@@ -108,8 +111,8 @@ const ServiceCard: React.FC<ServiceProps> = ({ service }) => {
           <h4 className="text-sm font-semibold text-gray-500 mb-2">Industries Served:</h4>
           <div className="flex flex-wrap gap-2">
             {service.industries.map((industry, index) => (
-              <span 
-                key={index} 
+              <span
+                key={index}
                 className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full"
               >
                 {industry}

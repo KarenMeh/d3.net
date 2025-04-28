@@ -78,7 +78,11 @@ const Navbar: React.FC<NavbarProps> = ({ language, setLanguage }) => {
                   </div>
                 )}
               </button>
-              <button className="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-md transition-colors duration-300 shadow-md hover:shadow-lg">
+              <button className=" hover:bg-blue-600 text-white px-4 py-2 rounded-md transition-colors duration-300 shadow-md hover:shadow-lg"
+               style={{
+                background: 'linear-gradient(100deg, #0059A8 0%, #00427C 100%)',
+                fontFamily: 'Inter, sans-serif',
+              }}>
                 {translations[language].contactUs}
               </button>
             </div>

@@ -65,8 +65,8 @@ const Contact = () => {
               <ContactInfo 
                 icon={<Mail className="h-5 w-5 text-teal-600" />}
                 title="Email Us"
-                info="contact@d3.net"
-                link="mailto:contact@d3.net"
+                info="info@d3.net"
+                link="mailto:info@d3.net"
               />
               <ContactInfo 
                 icon={<MapPin className="h-5 w-5 text-teal-600" />}
@@ -74,18 +74,6 @@ const Contact = () => {
                 info="123 Tech Plaza, San Francisco, CA 94105"
                 link="#"
               />
-            </div>
-            
-            <div className="mt-10">
-              <h4 className="text-lg font-semibold text-blue-900 mb-4">Operating Hours</h4>
-              <div className="space-y-2 text-gray-600">
-                <p>Monday - Friday: 8:00 AM - 8:00 PM EST</p>
-                <p>Saturday: 9:00 AM - 5:00 PM EST</p>
-                <p>Sunday: Closed</p>
-              </div>
-              <p className="mt-4 text-sm text-gray-500">
-                Emergency support available 24/7 for existing clients.
-              </p>
             </div>
           </div>
           
@@ -179,7 +167,11 @@ const Contact = () => {
                   
                   <button
                     type="submit"
-                    className="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg"
+                    className="w-full  hover:bg-blue-800 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg"
+                    style={{
+                      background: 'linear-gradient(100deg, #0059A8 0%, #00427C 100%)',
+                      fontFamily: 'Inter, sans-serif',
+                    }}
                   >
                     Send Message
                   </button>

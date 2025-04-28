@@ -1,104 +1,208 @@
-import React from 'react';
-import { Globe, MapPin } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { MapPin, Building, Users, Briefcase, Globe, Award } from 'lucide-react';
 import SectionTitle from './SectionTitle';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+// Slick Carousel Settings
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 3000,
+};
+
+// Counter Animation Component
+const AnimatedCounter = ({ end, duration = 2000, suffix = "" }) => {
+  const [count, setCount] = useState(0);
+  const countRef = useRef(null);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          let startTime;
+          const startValue = 0;
+          
+          const step = (timestamp) => {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            setCount(Math.floor(progress * (end - startValue) + startValue));
+            
+            if (progress < 1) {
+              window.requestAnimationFrame(step);
+            }
+          };
+          
+          window.requestAnimationFrame(step);
+          observer.unobserve(countRef.current);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    
+    if (countRef.current) {
+      observer.observe(countRef.current);
+    }
+    
+    return () => {
+      if (countRef.current) {
+        observer.unobserve(countRef.current);
+      }
+    };
+  }, [end, duration]);
+  
+  return (
+    <div ref={countRef} className="text-4xl font-bold text-white mb-2">
+      {count}{suffix}
+    </div>
+  );
+};
 
 const GlobalPresence = () => {
   const locations = [
-    { name: "San Francisco", country: "USA", role: "Headquarters", employees: "250+", clients: "500+" },
-    { name: "New York", country: "USA", role: "Regional Office", employees: "150+", clients: "300+" },
-    { name: "London", country: "UK", role: "European Hub", employees: "200+", clients: "400+" },
-    { name: "Berlin", country: "Germany", role: "Tech Center", employees: "100+", clients: "200+" },
-    { name: "Singapore", country: "Singapore", role: "APAC Headquarters", employees: "180+", clients: "350+" },
-    { name: "Sydney", country: "Australia", role: "Regional Office", employees: "120+", clients: "250+" }
+    { 
+      name: "San Francisco", 
+      country: "USA", 
+      role: "Headquarters", 
+      employees: "250+", 
+      clients: "500+",
+      icon: <Building className="h-8 w-8 text-teal-300" />
+    },
+    { 
+      name: "New York", 
+      country: "USA", 
+      role: "Regional Office", 
+      employees: "150+", 
+      clients: "300+",
+      icon: <Building className="h-8 w-8 text-teal-300" />
+    },
+    { 
+      name: "London", 
+      country: "UK", 
+      role: "European Hub", 
+      employees: "200+", 
+      clients: "400+",
+      icon: <Globe className="h-8 w-8 text-teal-300" />
+    },
+    { 
+      name: "Berlin", 
+      country: "Germany", 
+      role: "Tech Center", 
+      employees: "100+", 
+      clients: "200+",
+      icon: <Award className="h-8 w-8 text-teal-300" />
+    },
+    { 
+      name: "Singapore", 
+      country: "Singapore", 
+      role: "APAC Headquarters", 
+      employees: "180+", 
+      clients: "350+",
+      icon: <Globe className="h-8 w-8 text-teal-300" />
+    },
+    { 
+      name: "Sydney", 
+      country: "Australia", 
+      role: "Regional Office", 
+      employees: "120+", 
+      clients: "250+",
+      icon: <Building className="h-8 w-8 text-teal-300" />
+    }
   ];
 
   return (
-    <section id="global" className="py-20 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white relative overflow-hidden font-['Inter',sans-serif]">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzRjMC0yLjIgMS44LTQgNC00czQgMS44IDQgNC0xLjggNC00IDQtNC0xLjgtNC00TTAgNGMwLTIuMiAxLjgtNCA0LTRzNCAxLjggNCA0LTEuOCA0LTQgNC00LTEuOC00LTR6bTAgNTJjMC0yLjIgMS44LTQgNC00czQgMS44IDQgNC0xLjggNC00IDQtNC0xLjgtNC00eiIvPjwvZz48L2c+PC9zdmc+')] opacity-10"></div>
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="global" className="py-20 bg-white text-black relative overflow-hidden font-['Inter',sans-serif]">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle
           title="Global Presence"
           subtitle="Worldwide Healthcare IT Excellence"
           description="Delivering secure and reliable healthcare technology solutions across six strategic locations worldwide."
-          light={true}
+          light={false}
         />
-        
-        <div className="mt-16 relative">
-          <div className="hidden lg:block mb-16">
-            <div className="relative">
-              <div className="absolute inset-0 bg-blue-800 rounded-2xl opacity-50"></div>
-              <div className="relative bg-gradient-to-b from-blue-800/50 to-blue-900/50 backdrop-blur-sm rounded-2xl p-8 border border-blue-700/30">
-                <Globe className="absolute right-8 top-8 h-32 w-32 text-blue-500/20" />
-                <div className="grid grid-cols-3 gap-8">
-                  {locations.map((location, index) => (
-                    <div 
-                      key={index}
-                      className="bg-blue-800/40 backdrop-blur-sm rounded-xl p-6 border border-blue-700/30 hover:bg-blue-700/40 transition-all duration-300"
-                    >
-                      <div className="flex items-start mb-4">
-                        <MapPin className="h-5 w-5 text-teal-400 mt-1 mr-2 flex-shrink-0" />
-                        <div>
-                          <h3 className="font-semibold text-xl text-white mb-1 font-['Inter',sans-serif]">{location.name}</h3>
-                          <p className="text-blue-200 font-['Inter',sans-serif]">{location.country}</p>
-                        </div>
-                      </div>
-                      <div className="space-y-2">
-                        <div className="text-teal-300 text-sm font-medium font-['Inter',sans-serif]">{location.role}</div>
-                        <div className="flex justify-between text-sm text-blue-200 font-['Inter',sans-serif]">
-                          <span>Employees: {location.employees}</span>
-                          <span>Clients: {location.clients}</span>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="lg:hidden">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {locations.map((location, index) => (
+
+        {/* Carousel Section */}
+        <div className="mt-16">
+          <Slider {...settings}>
+            {locations.map((location, index) => (
+              <div key={index} className="outline-none">
                 <div 
-                  key={index}
-                  className="bg-blue-800/40 backdrop-blur-sm rounded-xl p-6 border border-blue-700/30"
+                  className="p-6 rounded-lg mx-2 flex items-center justify-center"
+                  style={{
+                    background: 'linear-gradient(100deg, #0059A8 0%, #00427C 100%)',
+                    fontFamily: 'Inter, sans-serif',
+                    height: '280px',
+                  }}
                 >
-                  <div className="flex items-start">
-                    <MapPin className="h-5 w-5 text-teal-300 mt-1 mr-2 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-white mb-1 font-['Inter',sans-serif]">{location.name}</h3>
-                      <p className="text-blue-200 text-sm font-['Inter',sans-serif]">{location.country}</p>
-                      <div className="mt-2 text-teal-300 text-sm font-['Inter',sans-serif]">{location.role}</div>
-                      <div className="mt-2 text-sm text-blue-200 font-['Inter',sans-serif]">
-                        <div>Employees: {location.employees}</div>
-                        <div>Clients: {location.clients}</div>
+                  <div className="flex flex-col items-center text-center w-full">
+                    <div className="flex flex-col items-center justify-center mb-4">
+                      {location.icon}
+                      <h3 className="font-semibold text-3xl text-white mt-2">{location.name}</h3>
+                    </div>
+                    <p className="text-white text-xl mb-3">{location.country}</p>
+                    <div className="mb-5 px-4 py-1 bg-blue-800 bg-opacity-50 rounded-full">
+                      <p className="text-teal-300 text-lg font-medium">{location.role}</p>
+                    </div>
+                    <div className="flex justify-center gap-8 text-white">
+                      <div className="flex items-center">
+                        <Users className="h-5 w-5 text-teal-300 mr-2" />
+                        <span className="text-lg">{location.employees}</span>
+                      </div>
+                      <div className="flex items-center">
+                        <Briefcase className="h-5 w-5 text-teal-300 mr-2" />
+                        <span className="text-lg">{location.clients}</span>
                       </div>
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
+            ))}
+          </Slider>
         </div>
-        
+
+        {/* Additional Stats with Animation */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-gradient-to-br from-blue-800/50 to-blue-900/50 backdrop-blur-sm rounded-xl p-8 border border-blue-700/30 text-center">
-            <div className="text-4xl font-bold text-white mb-2 font-['Inter',sans-serif]">30+</div>
-            <div className="text-teal-300 font-['Inter',sans-serif]">Countries Served</div>
-            <p className="mt-2 text-blue-200 text-sm font-['Inter',sans-serif]">Providing healthcare IT solutions globally</p>
+          <div className="backdrop-blur-sm rounded-xl p-8 border border-blue-200 text-center" 
+               style={{
+                background: 'linear-gradient(100deg, #0059A8 0%, #00427C 100%)',
+                fontFamily: 'Inter, sans-serif',
+              }}>
+            <div className="flex justify-center mb-2">
+              <Globe className="h-10 w-10 text-teal-300" />
+            </div>
+            <AnimatedCounter end={30} suffix="+" />
+            <div className="text-white">Countries Served</div>
+            <p className="mt-2 text-white text-sm">Providing healthcare IT solutions globally</p>
           </div>
           
-          <div className="bg-gradient-to-br from-blue-800/50 to-blue-900/50 backdrop-blur-sm rounded-xl p-8 border border-blue-700/30 text-center">
-            <div className="text-4xl font-bold text-white mb-2 font-['Inter',sans-serif]">1000+</div>
-            <div className="text-teal-300 font-['Inter',sans-serif]">Team Members</div>
-            <p className="mt-2 text-blue-200 text-sm font-['Inter',sans-serif]">Dedicated healthcare IT professionals</p>
+          <div className="backdrop-blur-sm rounded-xl p-8 border border-blue-200 text-center" 
+               style={{
+                background: 'linear-gradient(100deg, #0059A8 0%, #00427C 100%)',
+                fontFamily: 'Inter, sans-serif',
+              }}>
+            <div className="flex justify-center mb-2">
+              <Users className="h-10 w-10 text-teal-300" />
+            </div>
+            <AnimatedCounter end={1000} suffix="+" />
+            <div className="text-white">Team Members</div>
+            <p className="mt-2 text-white text-sm">Dedicated healthcare IT professionals</p>
           </div>
           
-          <div className="bg-gradient-to-br from-blue-800/50 to-blue-900/50 backdrop-blur-sm rounded-xl p-8 border border-blue-700/30 text-center">
-            <div className="text-4xl font-bold text-white mb-2 font-['Inter',sans-serif]">2000+</div>
-            <div className="text-teal-300 font-['Inter',sans-serif]">Active Clients</div>
-            <p className="mt-2 text-blue-200 text-sm font-['Inter',sans-serif]">Trusted by healthcare providers worldwide</p>
+          <div className="backdrop-blur-sm rounded-xl p-8 border border-blue-200 text-center" 
+               style={{
+                background: 'linear-gradient(100deg, #0059A8 0%, #00427C 100%)',
+                fontFamily: 'Inter, sans-serif',
+              }}>
+            <div className="flex justify-center mb-2">
+              <Briefcase className="h-10 w-10 text-teal-300" />
+            </div>
+            <AnimatedCounter end={2000} suffix="+" />
+            <div className="text-white">Active Clients</div>
+            <p className="mt-2 text-white text-sm">Trusted by healthcare providers worldwide</p>
           </div>
         </div>
       </div>

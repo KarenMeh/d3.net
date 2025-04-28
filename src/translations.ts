@@ -1,226 +1,59 @@
 interface Translations {
-    [key: string]: {
-      [key: string]: string;
-    };
-  }
-  
-  export const translations: Translations = {
-    en: {
-      // Navigation
-      aboutUs: "About Us",
-      services: "Services",
-      compliance: "Compliance",
-      globalPresence: "Global Presence",
-      contactUs: "Contact Us",
-      
-      // Hero Section
-      getStarted: "Get Started",
-      learnMore: "Learn More",
-      healthcareIT: "Healthcare IT",
-      inTheCloud: "in the Cloud",
-      experienceText: "Over 25 years of excellence in secure cloud hosting, software development, and AI automation for healthcare.",
-      hipaaCompliant: "HIPAA Compliant",
-      aiAutomation: "AI Automation",
-      cloudHosting: "Cloud Hosting",
-      secureStorage: "Secure Storage",
-      
-      // About Section
-      ourJourney: "Our Journey of Innovation",
-      aboutDescription: "With over 25 years in the industry, d3.net has been at the forefront of healthcare IT innovation, providing secure and reliable solutions.",
-      yearsOfExcellence: "Years of Excellence",
-      heritage: "Heritage",
-      expertise: "Expertise",
-      infrastructure: "Infrastructure",
-      innovation: "Innovation",
-      yearsExperience: "25+ years of experience in healthcare IT",
-      customSoftware: "Custom software development for healthcare",
-      serverSolutions: "Secure server and cloud hosting solutions",
-      aiWorkflows: "AI-powered automation for healthcare workflows",
-      aboutText: "At d3.net, we've been pioneering healthcare IT solutions since 1999. We started as an internet service provider and evolved into a comprehensive cloud hosting and technology partner for healthcare organizations worldwide.",
-      
-      // Services Section
-      ourServices: "Our Services",
-      solutionsSubtitle: "Comprehensive Healthcare IT Solutions",
-      solutionsDescription: "We offer a full spectrum of technology services tailored specifically for healthcare organizations.",
-      softwareDev: "Software Development",
-      internetProvider: "Internet Provider",
-      securityFirst: "Security First",
-      complianceGuaranteed: "Compliance Guaranteed",
-      monitoring: "24/7 Monitoring",
-      dataProtection: "Data Protection",
-      coreFeatures: "Core Features Across All Services",
-      securityDescription: "End-to-end encryption and security protocols for all services",
-      complianceDescription: "Built-in HIPAA, GDPR, and ISO compliance across our services",
-      monitoringDescription: "Continuous systems monitoring and rapid incident response",
-      dataProtectionDescription: "Robust data protection with automated backups and recovery",
-      industriesServed: "Industries Served",
-      healthcare: "Healthcare",
-      pharma: "Pharma",
-      research: "Research",
-      retail: "Retail",
-      
-      // Compliance Section
-      complianceTitle: "Compliance & Security",
-      complianceSubtitle: "Enterprise-Grade Security for Healthcare",
-      complianceDescription: "Our infrastructure and processes are designed to meet and exceed the strictest security and compliance requirements in healthcare.",
-      securityPromise: "Our Security Promise",
-      securityPromiseText: "At d3.net, security isn't just a feature—it's the foundation of everything we build. Our systems are designed with multiple layers of protection to safeguard your most sensitive healthcare data.",
-      readyToSecure: "Ready to secure your healthcare data?",
-      securityConsultation: "Schedule a Security Consultation",
-      
-      // Global Presence Section
-      worldwideExcellence: "Worldwide Healthcare IT Excellence",
-      globalDescription: "Delivering secure and reliable healthcare technology solutions across six strategic locations worldwide.",
-      headquarters: "Headquarters",
-      regionalOffice: "Regional Office",
-      europeanHub: "European Hub",
-      techCenter: "Tech Center",
-      apacHeadquarters: "APAC Headquarters",
-      employees: "Employees",
-      clients: "Clients",
-      countriesServed: "Countries Served",
-      teamMembers: "Team Members",
-      activeClients: "Active Clients",
-      providingGlobally: "Providing healthcare IT solutions globally",
-      dedicatedProfessionals: "Dedicated healthcare IT professionals",
-      trustedProviders: "Trusted by healthcare providers worldwide",
-      
-      // Contact Section
-      getInTouch: "Get in Touch With Our Team",
-      contactDescription: "Have questions about our healthcare IT solutions? Reach out to us today.",
-      hereToHelp: "We're Here to Help",
-      specialistText: "Our team of healthcare IT specialists is ready to answer your questions and provide solutions tailored to your organization's needs.",
-      callUs: "Call Us",
-      emailUs: "Email Us",
-      visitUs: "Visit Us",
-      operatingHours: "Operating Hours",
-      sendMessage: "Send Us a Message",
-      fullName: "Full Name",
-      emailAddress: "Email Address",
-      company: "Company/Organization",
-      message: "Your Message",
-      consent: "I consent to d3.net processing my data for contact purposes.",
-      messageSent: "Message Sent!",
-      willContact: "We'll be in touch with you shortly.",
-      
-      // Footer
-      documentation: "Documentation",
-      blog: "Blog",
-      caseStudies: "Case Studies",
-      whitepapers: "Whitepapers",
-      support: "Support",
-      privacyPolicy: "Privacy Policy",
-      termsOfService: "Terms of Service",
-      cookiePolicy: "Cookie Policy",
-      allRightsReserved: "All rights reserved",
-    },
-    de: {
-      // Navigation
-      aboutUs: "Über uns",
-      services: "Dienstleistungen",
-      compliance: "Compliance",
-      globalPresence: "Globale Präsenz",
-      contactUs: "Kontakt",
-      
-      // Hero Section
-      getStarted: "Jetzt starten",
-      learnMore: "Mehr erfahren",
-      healthcareIT: "Gesundheits-IT",
-      inTheCloud: "in der Cloud",
-      experienceText: "Über 25 Jahre Erfahrung in sicherem Cloud-Hosting, Softwareentwicklung und KI-Automatisierung für das Gesundheitswesen.",
-      hipaaCompliant: "HIPAA-konform",
-      aiAutomation: "KI-Automatisierung",
-      cloudHosting: "Cloud-Hosting",
-      secureStorage: "Sichere Speicherung",
-      
-      // About Section
-      ourJourney: "Unsere Innovationsreise",
-      aboutDescription: "Mit über 25 Jahren Branchenerfahrung ist d3.net führend in der Healthcare-IT-Innovation und bietet sichere und zuverlässige Lösungen.",
-      yearsOfExcellence: "Jahre Exzellenz",
-      heritage: "Tradition",
-      expertise: "Expertise",
-      infrastructure: "Infrastruktur",
-      innovation: "Innovation",
-      yearsExperience: "25+ Jahre Erfahrung in Gesundheits-IT",
-      customSoftware: "Maßgeschneiderte Softwareentwicklung für das Gesundheitswesen",
-      serverSolutions: "Sichere Server- und Cloud-Hosting-Lösungen",
-      aiWorkflows: "KI-gesteuerte Automatisierung für Gesundheits-Workflows",
-      aboutText: "Bei d3.net sind wir seit 1999 Pioniere für IT-Lösungen im Gesundheitswesen. Wir begannen als Internetanbieter und entwickelten uns zu einem umfassenden Cloud-Hosting- und Technologiepartner für Gesundheitsorganisationen weltweit.",
-      
-      // Services Section
-      ourServices: "Unsere Dienstleistungen",
-      solutionsSubtitle: "Umfassende IT-Lösungen für das Gesundheitswesen",
-      solutionsDescription: "Wir bieten ein komplettes Spektrum an Technologiedienstleistungen, speziell zugeschnitten auf Gesundheitsorganisationen.",
-      softwareDev: "Softwareentwicklung",
-      internetProvider: "Internetanbieter",
-      securityFirst: "Sicherheit zuerst",
-      complianceGuaranteed: "Compliance garantiert",
-      monitoring: "24/7 Überwachung",
-      dataProtection: "Datenschutz",
-      coreFeatures: "Kernfunktionen aller Dienstleistungen",
-      securityDescription: "Ende-zu-Ende-Verschlüsselung und Sicherheitsprotokolle für alle Dienste",
-      complianceDescription: "Integrierte HIPAA-, DSGVO- und ISO-Compliance für alle Dienste",
-      monitoringDescription: "Kontinuierliche Systemüberwachung und schnelle Reaktion auf Vorfälle",
-      dataProtectionDescription: "Robuster Datenschutz mit automatischer Sicherung und Wiederherstellung",
-      industriesServed: "Bediente Branchen",
-      healthcare: "Gesundheitswesen",
-      pharma: "Pharma",
-      research: "Forschung",
-      retail: "Einzelhandel",
-      
-      // Compliance Section
-      complianceTitle: "Compliance & Sicherheit",
-      complianceSubtitle: "Enterprise-Grade-Sicherheit für das Gesundheitswesen",
-      complianceDescription: "Unsere Infrastruktur und Prozesse sind darauf ausgelegt, die strengsten Sicherheits- und Compliance-Anforderungen im Gesundheitswesen zu erfüllen und zu übertreffen.",
-      securityPromise: "Unser Sicherheitsversprechen",
-      securityPromiseText: "Bei d3.net ist Sicherheit nicht nur ein Feature – sie ist die Grundlage von allem, was wir entwickeln. Unsere Systeme sind mit mehreren Schutzebenen konzipiert, um Ihre sensiblen Gesundheitsdaten zu schützen.",
-      readyToSecure: "Bereit, Ihre Gesundheitsdaten zu sichern?",
-      securityConsultation: "Sicherheitsberatung vereinbaren",
-      
-      // Global Presence Section
-      worldwideExcellence: "Weltweite Healthcare-IT-Exzellenz",
-      globalDescription: "Bereitstellung sicherer und zuverlässiger Healthcare-Technologielösungen an sechs strategischen Standorten weltweit.",
-      headquarters: "Hauptsitz",
-      regionalOffice: "Regionalbüro",
-      europeanHub: "Europäischer Hub",
-      techCenter: "Technologiezentrum",
-      apacHeadquarters: "APAC-Hauptsitz",
-      employees: "Mitarbeiter",
-      clients: "Kunden",
-      countriesServed: "Betreute Länder",
-      teamMembers: "Teammitglieder",
-      activeClients: "Aktive Kunden",
-      providingGlobally: "Bereitstellung von Healthcare-IT-Lösungen weltweit",
-      dedicatedProfessionals: "Engagierte Healthcare-IT-Experten",
-      trustedProviders: "Vertrauenswürdiger Partner für Gesundheitsdienstleister weltweit",
-      
-      // Contact Section
-      getInTouch: "Kontaktieren Sie unser Team",
-      contactDescription: "Haben Sie Fragen zu unseren Healthcare-IT-Lösungen? Sprechen Sie uns an.",
-      hereToHelp: "Wir sind für Sie da",
-      specialistText: "Unser Team von Healthcare-IT-Spezialisten steht bereit, Ihre Fragen zu beantworten und maßgeschneiderte Lösungen für Ihre Organisation anzubieten.",
-      callUs: "Rufen Sie uns an",
-      emailUs: "Schreiben Sie uns",
-      visitUs: "Besuchen Sie uns",
-      operatingHours: "Öffnungszeiten",
-      sendMessage: "Nachricht senden",
-      fullName: "Vollständiger Name",
-      emailAddress: "E-Mail-Adresse",
-      company: "Unternehmen/Organisation",
-      message: "Ihre Nachricht",
-      consent: "Ich stimme der Verarbeitung meiner Daten durch d3.net zu Kontaktzwecken zu.",
-      messageSent: "Nachricht gesendet!",
-      willContact: "Wir werden uns in Kürze bei Ihnen melden.",
-      
-      // Footer
-      documentation: "Dokumentation",
-      blog: "Blog",
-      caseStudies: "Fallstudien",
-      whitepapers: "Whitepaper",
-      support: "Support",
-      privacyPolicy: "Datenschutzerklärung",
-      termsOfService: "Nutzungsbedingungen",
-      cookiePolicy: "Cookie-Richtlinie",
-      allRightsReserved: "Alle Rechte vorbehalten",
-    }
+  [key: string]: {
+    [key: string]: string;
   };
+}
+
+export const translations: Translations = {
+  en: {
+    // Navigation
+    aboutUs: "About Us",
+    services: "Services",
+    compliance: "Compliance",
+    globalPresence: "Global Presence",
+    contactUs: "Contact Us",
+
+    // Industry Solutions Section
+    industrySolutionsHeading: "Industry Solutions",
+    crossIndustryExpertise: "Enterprise Software Architecture Excellence",
+    solutionsDescription: "Drawing from over 25 years of cross-industry expertise, we architect and deliver enterprise-grade solutions that address unique industry challenges while maintaining the highest standards of security, scalability, and compliance.",
+    industryName: "Industry",
+    industryDescription: "Description",
+    industryRequirements: "Requirements",
+    industryChallenges: "Critical Challenges",
+    industrySolutionsContent: "Enterprise Solutions",
+
+    // Compliance Section
+    complianceTitle: "Compliance & Security",
+    complianceSubtitle: "Enterprise-Grade Security for Healthcare",
+    complianceMainDescription: "Our infrastructure and processes are designed to meet and exceed the strictest security and compliance requirements in healthcare.",
+    securityPromise: "Our Security Promise",
+    securityPromiseText: "At d3.net, security isn't just a feature—it's the foundation of everything we build. Our systems are designed with multiple layers of protection to safeguard your most sensitive healthcare data.",
+  },
+
+  de: {
+    // Navigation
+    aboutUs: "Über Uns",
+    services: "Dienstleistungen",
+    compliance: "Compliance",
+    globalPresence: "Globale Präsenz",
+    contactUs: "Kontakt",
+
+    // Industry Solutions Section
+    industrySolutionsHeading: "Branchenlösungen",
+    crossIndustryExpertise: "Exzellenz in Enterprise-Softwarearchitektur",
+    solutionsDescription: "Mit über 25 Jahren branchenübergreifender Expertise entwickeln und implementieren wir Enterprise-Lösungen, die spezifische Branchenherausforderungen adressieren und höchste Standards in Sicherheit, Skalierbarkeit und Compliance gewährleisten.",
+    industryName: "Branche",
+    industryDescription: "Beschreibung",
+    industryRequirements: "Anforderungen",
+    industryChallenges: "Kritische Herausforderungen",
+    industrySolutionsContent: "Enterprise-Lösungen",
+
+    // Compliance Section
+    complianceTitle: "Compliance & Sicherheit",
+    complianceSubtitle: "Enterprise-Sicherheit für das Gesundheitswesen",
+    complianceMainDescription: "Unsere Infrastruktur und Prozesse sind darauf ausgelegt, die strengsten Sicherheits- und Compliance-Anforderungen im Gesundheitswesen zu erfüllen und zu übertreffen.",
+    securityPromise: "Unser Sicherheitsversprechen",
+    securityPromiseText: "Bei d3.net ist Sicherheit nicht nur ein Feature – sie ist das Fundament all unserer Entwicklungen. Unsere Systeme sind mit mehreren Schutzebenen konzipiert, um Ihre sensibelsten Gesundheitsdaten zu sichern.",
+  }
+};

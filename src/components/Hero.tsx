@@ -86,7 +86,7 @@ const Hero = () => {
             <div className="grid grid-cols-2 gap-6">
               <AnimatedFeatureBox
                 icon={<Shield className="h-12 w-12 text-blue-800" />}
-                title="HIPAA Compliant"
+                title="Enterprise Security"
                 delay="0"
               />
               <AnimatedFeatureBox

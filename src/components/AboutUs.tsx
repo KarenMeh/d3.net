@@ -18,21 +18,19 @@ const AboutUs = () => {
         <div className="mt-16 grid md:grid-cols-2 gap-12 items-center">
           <div>
             <div className="relative">
-              <div className="bg-blue-900 rounded-lg h-[400px] w-full overflow-hidden relative">
-                <div className="absolute inset-0 bg-gradient-to-tr from-blue-900 to-blue-700 opacity-80"></div>
+              <div className=" rounded-lg h-[400px] w-full overflow-hidden relative">
+              <div className="absolute inset-0" style={{
+                    backgroundImage: "url('/hero.png')",  // Replace with the relative path to your image in the public folder
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    fontFamily: 'Inter, sans-serif',
+                    fontWeight: 300,
+                    boxShadow: '0 0 12px rgba(0, 89, 168, 0.4)'
+                  }}></div>
+
                 <div className="relative h-full flex items-center justify-center">
                   <div className="text-center">
-                    <div className="text-7xl font-bold text-white">25+</div>
-                    <div 
-                      className="text-2xl mt-2" 
-                      style={{ 
-                        color: '#FEFFFFFF', // Bright teal color for contrast against dark background
-                        fontFamily: 'Inter, sans-serif',
-                        fontWeight: 300
-                      }}
-                    >
-                      Years of Excellence
-                    </div>
+                    
                   </div>
                 </div>
                 

@@ -61,7 +61,10 @@ const Compliance = () => {
           ))}
         </div>
         
-        <div className="mt-20 bg-blue-900 rounded-xl overflow-hidden shadow-xl">
+        <div className="mt-20  rounded-xl overflow-hidden shadow-xl" style={{
+                background: 'linear-gradient(100deg, #0059A8 0%, #00427C 100%)',
+                fontFamily: 'Inter, sans-serif',
+              }}>
           <div className="p-8 md:p-12">
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">Our Security Promise</h3>
             <p className="text-gray-300 mb-8 max-w-3xl">
@@ -78,17 +81,7 @@ const Compliance = () => {
             </div>
           </div>
           
-          <div className="bg-blue-800 p-8 md:p-12">
-            <div className="flex flex-col md:flex-row items-center justify-between">
-              <div className="mb-6 md:mb-0">
-                <h4 className="text-xl font-semibold text-white mb-2">Ready to secure your healthcare data?</h4>
-                <p className="text-gray-300">Let our experts show you how d3.net can protect your organization.</p>
-              </div>
-              <button className="bg-white text-blue-900 px-6 py-3 rounded-md font-semibold hover:bg-teal-50 transition-colors duration-300">
-                Schedule a Security Consultation
-              </button>
-            </div>
-          </div>
+          
         </div>
       </div>
     </section>
