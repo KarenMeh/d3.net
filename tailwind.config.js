@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Roboto', 'Arial', 'sans-serif'],
       },
       colors: {
         blue: {
@@ -32,6 +32,26 @@ export default {
           800: '#004D4D',
           900: '#003333',
         },
+        primary: {
+          DEFAULT: '#0066cc',
+          dark: '#004d99',
+          light: '#3399ff',
+        },
+        secondary: {
+          DEFAULT: '#ff6600',
+          dark: '#e65c00',
+          light: '#ff8533',
+        },
+        text: {
+          DEFAULT: '#333333',
+          light: '#666666',
+          dark: '#000000',
+        },
+        background: {
+          DEFAULT: '#ffffff',
+          light: '#f5f5f5',
+          dark: '#e6e6e6',
+        }
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out forwards',
@@ -56,6 +76,17 @@ export default {
           '0%': { transform: 'translateX(-20px)', opacity: '0' },
           '100%': { transform: 'translateX(0)', opacity: '1' },
         },
+      },
+      boxShadow: {
+        'custom': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        'custom-lg': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+      },
+      borderRadius: {
+        'custom': '0.5rem',
+      },
+      spacing: {
+        '128': '32rem',
+        '144': '36rem',
       },
     },
   },

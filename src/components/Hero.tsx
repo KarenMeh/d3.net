@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Shield, Server, CloudCog, Database } from 'lucide-react';
+import { translations } from '../translations';
 
-const Hero = () => {
+interface HeroProps {
+  language: string;
+}
+
+const Hero: React.FC<HeroProps> = ({ language }) => {
   const [height, setHeight] = useState('100vh');
 
   useEffect(() => {
@@ -17,94 +21,88 @@ const Hero = () => {
 
   return (
     <section 
-      className="relative overflow-hidden text-blue-200"
+      className="relative overflow-hidden"
       style={{ 
-        background: 'linear-gradient(135deg, #f8fbff 0%, #e6efff 100%)',
+        background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
         height, 
-        minHeight: '650px',
-        fontFamily: 'Inter, sans-serif',
+        minHeight: '100vh',
+        fontFamily: 'Open Sans, sans-serif',
       }}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 relative z-10 h-full flex items-center">
-        <div className="grid md:grid-cols-2 gap-12 items-center w-full">
-          <div className="text-center md:text-left">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 md:py-12 relative z-10 h-full flex items-center">
+        <div className="w-full flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
+          <div className="w-full md:w-1/2 max-w-2xl text-left md:pr-8">
             <h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 animate-fadeInUp"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight mb-3 sm:mb-4 md:mb-6 animate-fadeInUp"
               style={{ 
-                fontFamily: 'Inter, sans-serif',
-                color: '#2e2e2e', 
-                fontWeight: '800', // Extra bold weight
-                fontSize: '50px', // Adjusted font size
-                lineHeight: '60px', // 1.2 ratio of font size
-                letterSpacing: '-0.02em', // Optional: small negative letter spacing for a compact look
+                fontFamily: 'Open Sans, sans-serif',
+                color: '#1e293b',
+                fontWeight: '700',
+                fontSize: 'clamp(1.5rem, 3vw, 3.5rem)',
+                lineHeight: '1.2',
+                letterSpacing: '-0.03em',
+                textShadow: '0 2px 4px rgba(51, 51, 51, 0.1)',
+                position: 'relative',
+                display: 'inline-block'
               }}
             >
-              Cloud & Hosting Solutions for <span className="text-blue-800">Healthcare.</span>
+              {translations[language].heroTitle}
             </h1>
             <p 
-              className="text-base font-light leading-8 mb-8 max-w-xl mx-auto md:mx-0 animate-fadeInUp delay-150"
+              className="text-base sm:text-lg md:text-xl font-light leading-6 sm:leading-7 md:leading-8 mb-3 sm:mb-4 md:mb-6 animate-fadeInUp delay-150"
               style={{ 
-                fontFamily: 'Inter, sans-serif',
+                fontFamily: 'Open Sans, sans-serif',
                 fontWeight: 300,
-                fontSize: '16px',
-                lineHeight: '32px',
-                color: '#2e2e2e' 
+                fontSize: 'clamp(0.875rem, 1.5vw, 1.25rem)',
+                lineHeight: '1.6',
+                color: '#334155' 
               }}
             >
-              With over 25 years of excellence in secure cloud hosting, software development, and AI automation, we specialize in powering the healthcare industry with future-ready tech. From intelligent systems to scalable infrastructure, we turn complexity into seamless innovation.
+              {translations[language].heroSubtitle}
             </p>
-            <div className="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+            <p 
+              className="text-sm sm:text-base md:text-lg font-light leading-6 sm:leading-7 md:leading-8 mb-4 sm:mb-6 md:mb-8 max-w-xl animate-fadeInUp delay-300"
+              style={{ 
+                fontFamily: 'Open Sans, sans-serif',
+                fontWeight: 300,
+                fontSize: 'clamp(0.75rem, 1.25vw, 1rem)',
+                lineHeight: '1.6',
+                color: '#475569' 
+              }}
+            >
+              {translations[language].heroDescription}
+            </p>
+            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 animate-fadeInUp delay-400">
               <button 
-                className="hover:bg-blue-900 text-white px-10 py-3 rounded-md transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:-translate-y-1"
+                className="w-full sm:w-auto hover:bg-blue-900 text-white px-4 sm:px-6 md:px-10 py-2 sm:py-3 rounded-md transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:-translate-y-1 text-sm sm:text-base"
                 style={{
                   background: 'linear-gradient(100deg, #0059A8 0%, #00427C 100%)',
                   borderColor: '#0059A8',
-                  fontFamily: 'Inter, sans-serif',
+                  fontFamily: 'Open Sans, sans-serif',
                   fontWeight: 300,
                   boxShadow: '0 0 12px rgba(0, 89, 168, 0.4)'
                 }}
-              >
-                Get Started
-              </button>
-              <button 
-                className="border-2 text-black px-9 py-3 hover:bg-blue-900 rounded-md hover:text-white transition-all duration-300"
-                style={{
-                  borderColor: '#0059A8',
-                  fontFamily: 'Inter, sans-serif',
-                  fontWeight: 300,
-                  
-
-                 
+                onClick={() => {
+                  const contactForm = document.getElementById('contact');
+                  if (contactForm) {
+                    contactForm.scrollIntoView({ behavior: 'smooth' });
+                  }
                 }}
               >
-                Learn More
+                {translations[language].contactUs}
               </button>
             </div>
           </div>
-
-          <div className="relative hidden md:block">
-            <div className="grid grid-cols-2 gap-6">
-              <AnimatedFeatureBox
-                icon={<Shield className="h-12 w-12 text-blue-800" />}
-                title="Enterprise Security"
-                delay="0"
-              />
-              <AnimatedFeatureBox
-                icon={<CloudCog className="h-12 w-12 text-blue-800" />}
-                title="AI Automation"
-                delay="300"
-              />
-              <AnimatedFeatureBox
-                icon={<Server className="h-12 w-12 text-blue-800" />}
-                title="Cloud Hosting"
-                delay="150"
-              />
-              <AnimatedFeatureBox
-                icon={<Database className="h-12 w-12 text-blue-800" />}
-                title="Secure Storage"
-                delay="450"
-              />
-            </div>
+          <div className="w-full md:w-1/2 mt-6 md:mt-0">
+            <img 
+              src="/hero.png"
+              alt="Hero Image"
+              className="w-full h-auto rounded-lg shadow-lg object-cover"
+              style={{ 
+                maxHeight: '400px',
+                objectFit: 'contain'
+              }}
+            />
           </div>
         </div>
       </div>
@@ -112,31 +110,7 @@ const Hero = () => {
   );
 };
 
-const AnimatedFeatureBox = ({ icon, title, delay }) => {
-  return (
-    <div
-      className="group relative p-[1px] rounded-2xl overflow-hidden animate-fadeIn"
-      style={{ animationDelay: `${delay}ms` }}
-    >
-      <div className="bg-white rounded-2xl p-6 h-full w-full transition-all duration-300 ease-out shadow-xl group-hover:scale-[1.03] group-hover:rotate-[0.5deg]">
-        <div className="mb-4 p-4 rounded-full bg-blue-50 w-fit mx-auto group-hover:animate-bounceSlow transition-all duration-300">
-          {icon}
-        </div>
-        <h3 
-          className="text-lg text-center font-light text-gray-800"
-          style={{ fontFamily: 'Inter, sans-serif' }}
-        >
-          {title}
-        </h3>
-      </div>
-
-      {/* animated border shimmer */}
-      <div className="absolute inset-0 z-[-1] bg-gradient-to-r from-blue-500 via-blue-300 to-blue-500 blur-xl opacity-30 animate-gradientMove"></div>
-    </div>
-  );
-};
-
-const HeroWithStyles = () => {
+const HeroWithStyles: React.FC<HeroProps> = (props) => {
   return (
     <>
       <style>{`
@@ -168,35 +142,12 @@ const HeroWithStyles = () => {
           animation-delay: 150ms;
         }
 
-        @keyframes bounceSlow {
-          0%, 100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-6px);
-          }
-        }
-
-        .animate-bounceSlow {
-          animation: bounceSlow 2s ease-in-out infinite;
-        }
-
-        @keyframes gradientMove {
-          0% {
-            background-position: 0% 50%;
-          }
-          100% {
-            background-position: 100% 50%;
-          }
-        }
-
-        .animate-gradientMove {
-          background-size: 200% 200%;
-          animation: gradientMove 6s linear infinite;
+        .delay-300 {
+          animation-delay: 300ms;
         }
 
         html, body {
-          font-family: 'Inter', sans-serif;
+          font-family: 'Open Sans', sans-serif;
           font-weight: 300;
           font-size: 16px;
           line-height: 32px;
@@ -204,11 +155,15 @@ const HeroWithStyles = () => {
         }
 
         * {
-          font-family: 'Inter', sans-serif;
+          font-family: 'Open Sans', sans-serif;
+        }
+
+        .animate-fadeInUp.delay-400 {
+          animation-delay: 400ms;
         }
       `}</style>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" />
-      <Hero />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" />
+      <Hero {...props} />
     </>
   );
 };

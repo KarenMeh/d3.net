@@ -3,8 +3,6 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import AboutUs from './components/AboutUs';
 import Services from './components/Services';
-import Compliance from './components/Compliance';
-import GlobalPresence from './components/GlobalPresence';
 import IndustrySolutions from './components/IndustrySolutions';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -22,9 +20,7 @@ function App() {
         <Hero language={language} />
         <AboutUs language={language} />
         <Services language={language} />
-        <IndustrySolutions />
-        <Compliance language={language} />
-        <GlobalPresence language={language} />
+        <IndustrySolutions language={language} />
         <Contact language={language} />
       </main>
       <Footer language={language} />
