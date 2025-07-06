@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, Server, Menu, X, LogIn } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { translations } from '../translations';
 
 // Add font import
@@ -26,6 +27,8 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ language, setLanguage }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Detect browser language on component mount
@@ -72,6 +75,25 @@ const Navbar: React.FC<NavbarProps> = ({ language, setLanguage }) => {
     window.open('https://login.d3.net', '_blank', 'noopener,noreferrer');
   };
 
+  const handleLogoClick = () => {
+    if (location.pathname === '/') {
+      // If we're already on the home page, scroll to hero section
+      const heroSection = document.getElementById('hero');
+      if (heroSection) {
+        const headerHeight = 80;
+        const sectionTop = heroSection.offsetTop - headerHeight;
+        
+        window.scrollTo({
+          top: sectionTop,
+          behavior: 'smooth'
+        });
+      }
+    } else {
+      // Navigate to home page
+      navigate('/');
+    }
+  };
+
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -84,11 +106,17 @@ const Navbar: React.FC<NavbarProps> = ({ language, setLanguage }) => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <img 
-              src="/D3.png" 
-              alt="D3.net Logo" 
-              className="h-12 sm:h-16 md:h-20 w-auto transition-all duration-300"
-            />
+            <button 
+              onClick={handleLogoClick}
+              className="cursor-pointer bg-transparent border-none p-0"
+              aria-label="Go to homepage"
+            >
+              <img 
+                src="/new.png" 
+                alt="D3.net Logo" 
+                className="h-12 sm:h-16 md:h-20 w-auto transition-all duration-300"
+              />
+            </button>
           </div>
           
           {/* Right side container for nav and buttons */}
@@ -185,39 +213,38 @@ const Navbar: React.FC<NavbarProps> = ({ language, setLanguage }) => {
 };
 
 const NavLinks = ({ textColor, language, onLinkClick }: { textColor: string; language: string; onLinkClick?: () => void }) => {
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      const headerHeight = 80; // Height of the fixed header
-      const sectionTop = section.offsetTop - headerHeight;
-      
-      window.scrollTo({
-        top: sectionTop,
-        behavior: 'smooth'
-      });
-    }
-  };
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    e.preventDefault();
-    
+  const handleNavigation = (path: string, sectionId?: string) => {
     // Close mobile menu if it's open
     if (onLinkClick) {
       onLinkClick();
     }
 
-    // Scroll to section after a brief delay
-    setTimeout(() => {
-      scrollToSection(targetId);
-    }, 50);
+    if (location.pathname === '/' && sectionId) {
+      // If we're already on the home page, scroll to section
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const headerHeight = 80;
+        const sectionTop = section.offsetTop - headerHeight;
+        
+        window.scrollTo({
+          top: sectionTop,
+          behavior: 'smooth'
+        });
+      }
+    } else {
+      // Navigate to home page and then scroll to section
+      navigate('/', { state: { scrollTo: sectionId } });
+    }
   };
 
   return (
     <>
-      <a 
-        href="#about" 
-        onClick={(e) => handleClick(e, 'about')}
-        className={`${textColor} hover:text-blue-600 transition-colors duration-300 text-base block md:inline-block py-2 md:py-0 cursor-pointer`}
+      <button 
+        onClick={() => handleNavigation('/', 'about')}
+        className={`${textColor} hover:text-blue-600 transition-colors duration-300 text-base block md:inline-block py-2 md:py-0 cursor-pointer bg-transparent border-none text-left`}
         style={{ 
           fontFamily: 'Open Sans, sans-serif', 
           fontWeight: 300,
@@ -226,11 +253,10 @@ const NavLinks = ({ textColor, language, onLinkClick }: { textColor: string; lan
         }}
       >
         {translations[language].aboutUs}
-      </a>
-      <a 
-        href="#software-solutions" 
-        onClick={(e) => handleClick(e, 'software-solutions')}
-        className={`${textColor} hover:text-blue-600 transition-colors duration-300 text-base block md:inline-block py-2 md:py-0 cursor-pointer`}
+      </button>
+      <button 
+        onClick={() => handleNavigation('/', 'software-solutions')}
+        className={`${textColor} hover:text-blue-600 transition-colors duration-300 text-base block md:inline-block py-2 md:py-0 cursor-pointer bg-transparent border-none text-left`}
         style={{ 
           fontFamily: 'Open Sans, sans-serif', 
           fontWeight: 300,
@@ -239,11 +265,10 @@ const NavLinks = ({ textColor, language, onLinkClick }: { textColor: string; lan
         }}
       >
         {translations[language].softwareSolutions}
-      </a>
-      <a 
-        href="#server-offerings" 
-        onClick={(e) => handleClick(e, 'server-offerings')}
-        className={`${textColor} hover:text-blue-600 transition-colors duration-300 text-base block md:inline-block py-2 md:py-0 cursor-pointer`}
+      </button>
+      <button 
+        onClick={() => handleNavigation('/', 'server-offerings')}
+        className={`${textColor} hover:text-blue-600 transition-colors duration-300 text-base block md:inline-block py-2 md:py-0 cursor-pointer bg-transparent border-none text-left`}
         style={{ 
           fontFamily: 'Open Sans, sans-serif', 
           fontWeight: 300,
@@ -252,11 +277,10 @@ const NavLinks = ({ textColor, language, onLinkClick }: { textColor: string; lan
         }}
       >
         {translations[language].serverOfferings}
-      </a>
-      <a 
-        href="#contact" 
-        onClick={(e) => handleClick(e, 'contact')}
-        className={`${textColor} hover:text-blue-600 transition-colors duration-300 text-base block md:inline-block py-2 md:py-0 cursor-pointer`}
+      </button>
+      <button 
+        onClick={() => handleNavigation('/', 'contact')}
+        className={`${textColor} hover:text-blue-600 transition-colors duration-300 text-base block md:inline-block py-2 md:py-0 cursor-pointer bg-transparent border-none text-left`}
         style={{ 
           fontFamily: 'Open Sans, sans-serif', 
           fontWeight: 300,
@@ -265,7 +289,7 @@ const NavLinks = ({ textColor, language, onLinkClick }: { textColor: string; lan
         }}
       >
         {translations[language].contactUs}
-      </a>
+      </button>
     </>
   );
 };

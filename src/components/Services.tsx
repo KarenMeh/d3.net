@@ -29,7 +29,7 @@ const Services: React.FC<ServicesProps> = ({ language }) => {
       icon: <ClipboardList className="h-8 w-8 text-white" />,
       title: translations[language].teamstarTitle as string,
       description: translations[language].teamstarDescription as string,
-      link: "https://teamstar.d3.net"
+      link: "https://en.teamstar.me/"
     },
     {
       icon: <Bot className="h-8 w-8 text-white" />,
@@ -81,7 +81,12 @@ interface ServiceProps {
 
 const ServiceCard: React.FC<ServiceProps> = ({ service, language }) => {
   return (
-    <div className="group rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white h-full flex flex-col">
+    <a 
+      href={service.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 bg-white h-full flex flex-col block"
+    >
       <div className="p-6 transition-all group-hover:py-8" style={gradientStyle}>
         <div className="flex justify-center">{service.icon}</div>
       </div>
@@ -89,17 +94,12 @@ const ServiceCard: React.FC<ServiceProps> = ({ service, language }) => {
         <h3 className="font-bold text-xl text-blue-900 mb-3">{service.title}</h3>
         <p className="text-gray-600 mb-5">{service.description}</p>
         <div className="mt-auto">
-          <a 
-            href={service.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block text-blue-700 hover:text-blue-900 font-medium"
-          >
+          <span className="inline-block text-blue-700 group-hover:text-blue-900 font-medium">
             {translations[language].visitWebsite}
-          </a>
+          </span>
         </div>
       </div>
-    </div>
+    </a>
   );
 };
 
